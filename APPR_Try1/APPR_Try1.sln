@@ -4,20 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APPR_Try1", "APPR_Try1\APPR_Try1.csproj", "{5663806B-CE5F-4EAB-ABB0-704814D7146B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{3E624C2D-0407-41B6-9252-6D19AB082A28}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject2", "TestProject2\TestProject2.csproj", "{352D8006-9744-48E1-AA46-A8AAD7D33401}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject3", "TestProject3\TestProject3.csproj", "{26AB616F-C19A-4E54-B254-E772F3B6BF27}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject4", "TestProject4\TestProject4.csproj", "{0439F10C-E7C0-4754-A25A-34459A88C53C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject5", "TestProject5\TestProject5.csproj", "{04F9A215-6A61-4D19-B0C5-DDF869F34A71}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject6", "TestProject6\TestProject6.csproj", "{78E97CD8-3BE9-4E53-AA44-05825A9ADC00}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stressTest", "stressTest\stressTest.csproj", "{33D34F90-0B40-42B8-923B-FB0621CA67B5}"
+EndProject19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject6", "TestProject6\TestProject6.csproj", "{78E97CD8-3BE9-4E53-AA44-05825A9ADC00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
