@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\APPR_Try1.props" />
+</Project>
