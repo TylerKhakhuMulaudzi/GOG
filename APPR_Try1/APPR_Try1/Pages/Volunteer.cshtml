@@ -1,0 +1,134 @@
+﻿@page
+@model VolunteerModel
+@{
+    ViewData["Title"] = "Volunteer with Gift of the Givers";
+}
+
+<header class="bg-success text-white text-center py-5">
+    <h1>Volunteer with Gift of the Givers</h1>
+    <p>Make a difference by helping those in need.</p>
+</header>
+
+<section class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Why Volunteer?</h2>
+            <p>
+                At Gift of the Givers, volunteers are essential to our mission of providing disaster relief, healthcare, water, and education to those in need. Your efforts can help us reach communities in crisis and bring hope to those who need it most.
+            </p>
+            <h3>Volunteer Opportunities</h3>
+            <ul>
+                <li>Disaster Response</li>
+                <li>Medical Assistance</li>
+                <li>Food Distribution</li>
+                <li>Logistics and Coordination</li>
+                <li>Educational Support</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <img src="https://giftofthegivers.org/images/volunteers.jpg" alt="Volunteers at work" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <h2 class="text-center my-5">Sign Up to Volunteer</h2>
+
+    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(TempData["SuccessMessage"] as string))
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <form method="post" enctype="multipart/form-data" id="volunteerForm">
+        <div class="form-group">
+            <label asp-for="Volunteer.FullName">Full Name:</label>
+            <input asp-for="Volunteer.FullName" class="form-control" required>
+            <span asp-validation-for="Volunteer.FullName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Volunteer.Email">Email Address:</label>
+            <input asp-for="Volunteer.Email" class="form-control" required>
+            <span asp-validation-for="Volunteer.Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Volunteer.Phone">Phone Number:</label>
+            <input asp-for="Volunteer.Phone" class="form-control" required>
+            <span asp-validation-for="Volunteer.Phone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Volunteer.Interests">Areas of Interest:</label>
+            <select asp-for="Volunteer.Interests" class="form-control" required onchange="showExperienceField()">
+                <option value="">Select...</option>
+                <option value="disasterResponse">Disaster Response</option>
+                <option value="medicalAssistance">Medical Assistance</option>
+                <option value="foodDistribution">Food Distribution</option>
+                <option value="logistics">Logistics</option>
+                <option value="education">Education</option>
+            </select>
+            <span asp-validation-for="Volunteer.Interests" class="text-danger"></span>
+        </div>
+
+        <div id="experienceSection" style="display:none;">
+            <h3>Tell Us About Your Experience</h3>
+
+            <div class="form-group">
+                <label asp-for="Volunteer.Experience">Relevant Experience:</label>
+                <textarea asp-for="Volunteer.Experience" class="form-control" rows="4" placeholder="Provide details of your experience or qualifications in the selected area..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="qualification">Upload Your Qualification (Optional):</label>
+                <input type="file" class="form-control-file" id="qualification" name="qualification">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Volunteer.Availability">Availability:</label>
+            <textarea asp-for="Volunteer.Availability" class="form-control" rows="3" placeholder="Please indicate when you're available to volunteer."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-block">Submit Application</button>
+    </form>
+</section>
+
+<footer class="bg-success text-white text-center py-4 mt-5">
+    <p>Gift of the Givers © 2024 | <a href="https://giftofthegivers.org" class="text-white">Visit our Website</a></p>
+</footer>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        function showExperienceField() {
+            var interest = document.getElementById("Volunteer_Interests").value;
+            var experienceSection = document.getElementById("experienceSection");
+            if (interest) {
+                experienceSection.style.display = "block";
+            } else {
+                experienceSection.style.display = "none";
+            }
+        }
+
+        $(document).ready(function () {
+            $('#volunteerForm').submit(function (e) {
+                if (!$(this).valid()) {
+                    e.preventDefault();
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+}
