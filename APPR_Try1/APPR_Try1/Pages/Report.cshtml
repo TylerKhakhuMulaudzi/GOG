@@ -1,0 +1,54 @@
+﻿@page
+@model ReportModel
+@{
+    ViewData["Title"] = "Generate Report";
+}
+
+<h2>Generate Report</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Report.ReportType">Report Type:</label>
+        <select asp-for="Report.ReportType" class="form-control">
+            <option value="">Select a report type...</option>
+            <option value="Healthcare Assistance">Healthcare Assistance</option>
+            <option value="Malnutrition and Hunger">Malnutrition and Hunger</option>
+            <option value="Water Supply Crisis">Water Supply Crisis</option>
+            <option value="Educational Facility Damage">Educational Facility Damage</option>
+            <option value="Displacement and Shelter Needs">Displacement and Shelter Needs</option>
+            <option value="Infrastructure Damage">Infrastructure Damage</option>
+        </select>
+        <span asp-validation-for="Report.ReportType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Report.StartDate">Start Date:</label>
+        <input asp-for="Report.StartDate" class="form-control" type="date" />
+        <span asp-validation-for="Report.StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Report.EndDate">End Date:</label>
+        <input asp-for="Report.EndDate" class="form-control" type="date" />
+        <span asp-validation-for="Report.EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Report.AdditionalFilters">Additional Filters:</label>
+        <input asp-for="Report.AdditionalFilters" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate Report</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Report.ReportData))
+{
+    <h3 class="mt-5">Report Results</h3>
+    <pre>@Model.Report.ReportData</pre>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

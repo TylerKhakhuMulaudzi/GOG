@@ -1,0 +1,54 @@
+﻿@page
+@model APPR_Try1.Pages.RegisterPageModel
+@{
+}
+<form method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="User.UserName">Username</label>
+            <input asp-for="User.UserName" class="form-control" placeholder="Username">
+            <span asp-validation-for="User.UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="User.LastName">Last Name</label>
+            <input asp-for="User.LastName" class="form-control" placeholder="Last Name">
+            <span asp-validation-for="User.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="User.Email">Email</label>
+            <input asp-for="User.Email" class="form-control" placeholder="Email">
+            <span asp-validation-for="User.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="User.Password">Password</label>
+            <input asp-for="User.Password" class="form-control" placeholder="Password">
+            <span asp-validation-for="User.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="User.ContactNumber">Contact Number</label>
+            <input asp-for="User.ContactNumber" class="form-control" placeholder="Contact Number">
+            <span asp-validation-for="User.ContactNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+@if (!ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
